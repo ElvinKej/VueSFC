@@ -1,25 +1,56 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-      </div>
+      <h1>{{ sitename }}</h1>
+      <button @click="showCheckout">{{ totalItemsInTheCart }}</button>
     </header>
+      
 
     <main>
-      <TheWelcome />
+      <component :is="currentView"></component>
     </main>
   </div>
 </template>
 
-<style scoped>
+<script>
+import ProductList from '.components/ProductList.vue';
+import Checkout from './components/Checkout.vue';
+
+
+
+export default {
+  name: "#app",
+  data() {
+    return {
+      sitename: "Vue.js SFC App",
+      cart: [],
+      currentView: ProductList,
+      //products: products,
+      //products: [],
+
+    }
+  },
+  components: {
+    ProductList, Checkout
+  },
+  methods: {
+    showCheckout() {
+      if (this.currentView === ProductList) {
+        this.currentView = Checkout;
+      } else {
+        this.currentView = ProductList;
+      }
+    }
+  },
+  computed: {
+    totalItemsInTheCart: function() {
+      return this.cart.length || "";
+    }
+  }
+};
+</script>
+
+<!-- <style scoped>
 header {
   line-height: 1.5;
 }
@@ -46,4 +77,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style>
+</style> -->
