@@ -2,7 +2,9 @@
   <div id="app">
     <header>
       <h1>{{ sitename }}</h1>
-      <button @click="showCheckout">{{ totalItemsInTheCart }}</button>
+      <button @click="showCheckout">{{ totalItemsInTheCart }}Checkout
+      <font-awesome-icon icon="fa-solid fa-cart-shopping"/>
+      </button>
     </header>
       
 
@@ -13,7 +15,7 @@
 </template>
 
 <script>
-import ProductList from '.components/ProductList.vue';
+import ProductList from './components/ProductList.vue';
 import Checkout from './components/Checkout.vue';
 
 
