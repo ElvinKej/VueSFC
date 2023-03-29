@@ -1,14 +1,21 @@
 <template>
     <div><h2>Welcome to the Checkout</h2></div>
-
-
+<!-- 
 <h3>Your current items in the cart are {{totalItemsInTheCart}} in total:</h3>
+<div v-for="product in sortedProducts">
+<div v-if="atLeastOneInTheCart(product)">
+<h3 v-text="product.title"></h3>
+<p><span>Product ID:</span>{{ "" + product.id }}</p>
+</div>
+</div> -->
+
+
 </template>
 
-<script>
+<!-- <script>
 export default {
     name: "Checkout",
-    props: ["sortedProducts", "imagesBaseURL", "cart"],
+    props: ["sortedProducts", "cart"],
    methods: {
     cartCount(id) {
         let count = 0;
@@ -33,4 +40,4 @@ export default {
    }
 }
 
-</script>
+</script> -->

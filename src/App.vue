@@ -11,7 +11,6 @@
     <main>
       <component :is="currentView"
       :sortedProducts="sortedProducts" 
-      :imagesBaseURL="imagesBaseURL"
       :cart="cart" @add-item-to-cart="addItemToCart"></component>
     </main>
   </div>
@@ -31,7 +30,7 @@ export default {
       cart: [],
       currentView: ProductLesson,
       //products: products,
-      imagesBaseURL:"",
+      //imagesBaseURL:"",
       products: [],
       AWS_URL: "https://webstorev1-env.eba-kvhfmh8p.eu-west-2.elasticbeanstalk.com/collections/products",
     }

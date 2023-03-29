@@ -5,10 +5,10 @@
         <p>Location: {{product.location}} </p>
         <p>Price: {{product.price}}</p>
         <p>Space: {{product.space}}</p>
-        <figure>
-        <img v-bind:src="imagesBaseURL + product.image">
-    </figure>
-        <button v-if="canAddToCart(product)" v:on:click="addItemToCart(product)">Add to the Cart</button>
+
+        <img v-bind:src="product.image">
+
+        <button @click="addItemToCart(product)" v-if="canAddToCart(product)" >Add to the Cart</button>
             <button disabled v-else>Add to Cart</button>
 
             <span v-if="itemsLeft(product) === 0">Out of Stock!</span>
@@ -21,7 +21,7 @@
 <script>
 export default {
     name: "ProductLesson",
-    props: ["sortedProducts", "imagesBaseURL","cart"],
+    props: ["sortedProducts", "cart"],
     data() {
         return {}
     },
