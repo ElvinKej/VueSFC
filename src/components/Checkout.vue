@@ -1,18 +1,27 @@
 <template>
-    <div><h2>Welcome to the Checkout</h2></div>
-<!-- 
-<h3>Your current items in the cart are {{totalItemsInTheCart}} in total:</h3>
-<div v-for="product in sortedProducts">
-<div v-if="atLeastOneInTheCart(product)">
-<h3 v-text="product.title"></h3>
-<p><span>Product ID:</span>{{ "" + product.id }}</p>
-</div>
-</div> -->
+    <div><h2>Welcome to the Checkout</h2>
 
+<h3>Your current items in the cart are {{totalItemsInTheCart}} in total:</h3>
+    <div>
+        <div v-for="product in sortedProducts" class="lessons">
+            <div v-if="atLeastOneInTheCart(product)">
+                <p>Subject: {{product.subject}} </p>
+                <p>Location: {{product.location}} </p>
+                <p>Price: {{product.price}}</p>
+                <p>Space: {{product.space}}</p>
+                <img v-bind:src="product.image">
+            <p>Available items:{{ itemsLeft(product) }}</p>
+            <p>In the cart you have added: {{ cartCount(product.id) }}</p>
+    <!-- <h3 v-text="product.subject"></h3>
+    <p><span>Product ID:</span>{{ "" + product.id }}</p> -->
+    </div>
+    </div>
+</div>
+</div>
 
 </template>
 
-<!-- <script>
+<script>
 export default {
     name: "Checkout",
     props: ["sortedProducts", "cart"],
@@ -38,6 +47,5 @@ export default {
         return this.cart.length || ";"
     },
    }
-}
-
-</script> -->
+};
+</script>
