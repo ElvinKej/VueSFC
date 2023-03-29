@@ -1,3 +1,24 @@
+<!-- <template>
+  <div id="app">
+    <header>
+      <h1></h1>
+        <button @click="showCheckout">{{ this.cart.length }}
+        Checkout</button>
+    </header>
+    <main>
+      <component :is="currentView"></component>
+    </main>
+  </div>
+</template>
+<script>
+import ProductList from "./components/ProductList.Vue";
+import Checkout from "./components/Checkout.vue";
+
+export default {
+  name: "App"
+}
+</script> -->
+
 <template>
   <div id="app">
     <header>
@@ -9,7 +30,8 @@
       
 
     <main>
-      <component :is="currentView"></component>
+      <component :is="currentView"
+      :sortedProducts="sortedProducts"></component>
     </main>
   </div>
 </template>
@@ -17,19 +39,18 @@
 <script>
 import ProductList from './components/ProductList.vue';
 import Checkout from './components/Checkout.vue';
-
+import products from "./assets/json/products.json";
 
 
 export default {
-  name: "#app",
+  name: 'App',
   data() {
     return {
       sitename: "Vue.js SFC App",
       cart: [],
       currentView: ProductList,
-      //products: products,
+      products: products,
       //products: [],
-
     }
   },
   components: {
@@ -47,6 +68,14 @@ export default {
   computed: {
     totalItemsInTheCart: function() {
       return this.cart.length || "";
+    },
+    sortedProducts() {
+      function compare(a, b) {
+        if (a.subject > b.subject) return 1;
+        if (a.subject < b.subject) return -1;
+        return 0;
+      }
+      return this.products.sort(compare);
     }
   }
 };
@@ -79,4 +108,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style> -->
+</style> --> 
