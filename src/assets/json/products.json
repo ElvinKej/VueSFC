@@ -5,7 +5,7 @@
         "location": "London",
         "price": "£100",
         "space": 3,
-        "image": "Pictures/Maths.png"
+        "image": "images/Maths.png"
     },
     {
         "id": 102,
@@ -13,7 +13,7 @@
         "location": "London",
         "price": "£100",
         "space": 7,
-        "image": "Pictures/English.png"
+        "image": "images/English.png"
     },
     {
         "id": 103,
@@ -21,7 +21,7 @@
         "location": "Oxford",
         "price": "£100",
         "space": 10,
-        "image": "Pictures/Science.png"
+        "image": "images/Science.png"
     },
     {
         "id": 104,
@@ -29,7 +29,7 @@
         "location": "Manchester",
         "price": "£150",
         "space": 6,
-        "image": "Pictures/History.png"
+        "image": "images/History.png"
     },
     {
         "id": 105,
@@ -37,7 +37,7 @@
         "location": "London",
         "price": "£80",
         "space": 6,
-        "image": "Pictures/Geography.png"
+        "image": "images/Geography.png"
     },
     {
         "id": 106,
@@ -45,7 +45,7 @@
         "location": "Oxford",
         "price": "£90",
         "space": 22,
-        "image": "Pictures/Music.png"
+        "image": "images/Music.png"
     },
     {
         "id": 107,
@@ -53,7 +53,7 @@
         "location": "Liverpool",
         "price": "£90",
         "space": 47,
-        "image": "Pictures/Spanish.png"
+        "image": "images/Spanish.png"
     },
     {
         "id": 108,
@@ -61,7 +61,7 @@
         "location": "Birmingham",
         "price": "£125",
         "space": 4,
-        "image": "Pictures/French.png"
+        "image": "images/French.png"
     },
     {
         "id": 109,
@@ -69,7 +69,7 @@
         "location": "Brighton",
         "price": "£140",
         "space": 10,
-        "image": "Pictures/Art.png"
+        "image": "images/Art.png"
     },
     {
         "id": 110,
@@ -77,6 +77,6 @@
         "location": "Sheffield",
         "price": "£125",
         "space": 13,
-        "image": "Pictures/Economics.png"
+        "image": "images/Economics.png"
     }
 ]

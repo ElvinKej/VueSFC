@@ -1,24 +1,3 @@
-<!-- <template>
-  <div id="app">
-    <header>
-      <h1></h1>
-        <button @click="showCheckout">{{ this.cart.length }}
-        Checkout</button>
-    </header>
-    <main>
-      <component :is="currentView"></component>
-    </main>
-  </div>
-</template>
-<script>
-import ProductList from "./components/ProductList.Vue";
-import Checkout from "./components/Checkout.vue";
-
-export default {
-  name: "App"
-}
-</script> -->
-
 <template>
   <div id="app">
     <header>
@@ -32,7 +11,8 @@ export default {
     <main>
       <component :is="currentView"
       :sortedProducts="sortedProducts" 
-      :imagesBaseURL="imagesBaseURL"></component>
+      :imagesBaseURL="imagesBaseURL"
+      :cart="cart" @add-item-to-cart="addItemToCart"></component>
     </main>
   </div>
 </template>
@@ -40,7 +20,7 @@ export default {
 <script>
 import ProductLesson from './components/ProductLesson.vue';
 import Checkout from './components/Checkout.vue';
-import products from "./assets/json/products.json";
+//import products from './assets/json/products.json'
 
 
 export default {
@@ -50,13 +30,28 @@ export default {
       sitename: "Vue.js SFC App",
       cart: [],
       currentView: ProductLesson,
-      products: products,
+      //products: products,
       imagesBaseURL:"",
-      //products: [],
+      products: [],
+      AWS_URL: "https://webstorev1-env.eba-kvhfmh8p.eu-west-2.elasticbeanstalk.com/collections/products",
     }
   },
   components: {
     ProductLesson, Checkout
+  },
+  created: function() {
+    let webstore = this;
+    fetch(this.AWS_URL).then(
+      function (response) {
+        response.json().then(
+          function (json) {
+            console.log(json);
+            webstore.products = json;
+          }
+        )
+      }
+    )
+
   },
   methods: {
     showCheckout() {
@@ -66,6 +61,20 @@ export default {
         this.currentView = ProductLesson;
       }
     },
+    addItemToCart: function (product) {
+      this.cart.push(product.id);
+    }
+    // addItemToCart: function (selectedProduct) {
+    //   let x = parseFloat(selectedProduct.space);
+    //   let cartLess = structuredClone(selectedProduct);
+    //   if (x > 0) {
+    //     x = x - 1;
+    //     cartLess.space = 1;
+    //     this.cart.push(cartLess);
+    //     selectedProduct.space = x;
+    //   }
+    // }
+  },
   computed: {
     totalItemsInTheCart: function() {
       return this.cart.length || "";
@@ -79,7 +88,6 @@ export default {
       return this.products.sort(compare);
     }
   }
-}
 };
 </script>
 
