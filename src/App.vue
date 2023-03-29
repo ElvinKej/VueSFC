@@ -31,13 +31,14 @@ export default {
 
     <main>
       <component :is="currentView"
-      :sortedProducts="sortedProducts"></component>
+      :sortedProducts="sortedProducts" 
+      :imagesBaseURL="imagesBaseURL"></component>
     </main>
   </div>
 </template>
 
 <script>
-import ProductList from './components/ProductList.vue';
+import ProductLesson from './components/ProductLesson.vue';
 import Checkout from './components/Checkout.vue';
 import products from "./assets/json/products.json";
 
@@ -48,23 +49,23 @@ export default {
     return {
       sitename: "Vue.js SFC App",
       cart: [],
-      currentView: ProductList,
+      currentView: ProductLesson,
       products: products,
+      imagesBaseURL:"",
       //products: [],
     }
   },
   components: {
-    ProductList, Checkout
+    ProductLesson, Checkout
   },
   methods: {
     showCheckout() {
-      if (this.currentView === ProductList) {
+      if (this.currentView === ProductLesson) {
         this.currentView = Checkout;
       } else {
-        this.currentView = ProductList;
+        this.currentView = ProductLesson;
       }
-    }
-  },
+    },
   computed: {
     totalItemsInTheCart: function() {
       return this.cart.length || "";
@@ -78,6 +79,7 @@ export default {
       return this.products.sort(compare);
     }
   }
+}
 };
 </script>
 
