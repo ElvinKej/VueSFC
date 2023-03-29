@@ -11,7 +11,8 @@
     <main>
       <component :is="currentView"
       :sortedProducts="sortedProducts" 
-      :cart="cart" @add-item-to-cart="addItemToCart"></component>
+      :cart="cart" @add-item-to-cart="addItemToCart"
+      @manage-remove-item="manageRemoveItem"></component>
     </main>
   </div>
 </template>
@@ -50,7 +51,9 @@ export default {
         )
       }
     )
-
+    // if ("serviceWorker" in navigator) {
+    //   navigator.serviceWorker.register("service-worker.js");
+    // }
   },
   methods: {
     showCheckout() {
@@ -62,6 +65,19 @@ export default {
     },
     addItemToCart: function (product) {
       this.cart.push(product.id);
+    },
+    removeItemFromCart(product) {
+      let index= this.cart.indexOf(product.id);
+      this.cart.splice(index, 1);
+    },
+    manageRemoveItem(product) {
+      this.removeItemFromCart(product);
+      if(!this.atLeastOneInTheCart) {
+        this.currentView = ProductLesson;
+      }
+    },
+    atLeastOneInTheCart() {
+      return this.totalItemsInTheCart >= 1;
     }
     // addItemToCart: function (selectedProduct) {
     //   let x = parseFloat(selectedProduct.space);

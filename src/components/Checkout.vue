@@ -14,6 +14,7 @@
             <p>In the cart you have added: {{ cartCount(product.id) }}</p>
     <!-- <h3 v-text="product.subject"></h3>
     <p><span>Product ID:</span>{{ "" + product.id }}</p> -->
+    <button @click="manageRemoveItem(product)">Remove 1 product</button>
     </div>
     </div>
 </div>
@@ -46,6 +47,9 @@ export default {
     totalItemsInTheCart: function () {
         return this.cart.length || ";"
     },
+    manageRemoveItem: function (product) {
+        this.$emit("manage-remove-item", product);
+    }
    }
 };
 </script>
